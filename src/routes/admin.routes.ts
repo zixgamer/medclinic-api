@@ -8,7 +8,7 @@ const adminRoutes = Router();
 const adminController = new AdminController();
 
 adminRoutes.get(
-  "admin/ping",
+  "/admin/ping",
   authMiddleware,
   roleMiddleware("admin"),
   asyncHandler((req, res) => adminController.ping(req, res)),
