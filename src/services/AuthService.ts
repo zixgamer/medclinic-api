@@ -37,13 +37,13 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new AppError("Usuário não encontrado", 404);
+      throw new AppError("Credenciais inválidas", 401);
     }
 
     const passowrdIsValid = await comparePassword(dto.password, user.password);
 
     if (!passowrdIsValid) {
-      throw new AppError("Senha inválida", 401);
+      throw new AppError("Credenciais inválidas", 401);
     }
 
     const token = generateToken({ id: user.id, role: user.role });

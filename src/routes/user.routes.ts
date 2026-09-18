@@ -7,7 +7,7 @@ const userRoutes = Router();
 const userController = new UserController();
 
 userRoutes.get(
-  "/me",
+  "/users/me",
   authMiddleware,
   asyncHandler((req, res) => userController.me(req, res)),
 );

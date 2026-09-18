@@ -26,5 +26,7 @@ export function validateDto(dtoClass: any) {
     } else {
       req.body = dto;
     }
+
+    next();
   };
 }
