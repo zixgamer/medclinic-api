@@ -1,14 +1,11 @@
 import { Request, Response } from "express";
-import { User } from "../entities/User";
-import { AppDataSource } from "../database/data-source";
+import { UserRepository } from "../repositories/UserRepository";
+
+const userRepository = new UserRepository();
 
 export class UserController {
   async me(req: Request, res: Response): Promise<Response> {
-    const userRepository = AppDataSource.getRepository(User);
-
-    const user = await userRepository.findOne({
-      where: { id: req.user?.id },
-    });
+    const user = await userRepository.findById(req.user!.id);
 
     if (!user) {
       return res.status(404).json({ message: "Usuário não foi encontrado" });
