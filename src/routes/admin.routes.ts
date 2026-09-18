@@ -13,3 +13,5 @@ adminRoutes.get(
   roleMiddleware("admin"),
   asyncHandler((req, res) => adminController.super(req, res)),
 );
+
+export default adminRoutes;
